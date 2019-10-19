@@ -1,60 +1,49 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="mtg-mason.tld" prefix="mtg" %>
+<jsp:directive.include file="../fragments/mason-init.jspf"/>
 
-<jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
+<m:resource>
 
-<c:choose>
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
- <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * FROM movie 
-</sql:query>
- <c:set target="${requestScope.map}" property="d0" value="${result}"/>
- <mtg:out value="${map}" tableName="movie"/>
- </c:when>
+    <m:request method="GET">
+       <sql:query var="result" dataSource="${datasource}">
+          SELECT * FROM movie
+       </sql:query>
+       <c:set target="${output}" property="output" value="${result}"/>
+    </m:request>
 
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
- <sql:update var="result" dataSource="jdbc/mtgDataSource"> insert into movie (name,rating) values (? ,? ) 
-<sql:param value="${mtgReq.params['name']}" />
-<sql:param value="${mtgReq.params['rating']}" />
-</sql:update>
- <mtg:out value="${map}" tableName="movie"/>
- </c:when>
+     <m:request method="GET" item="true">
+        <sql:query var="result" dataSource="${datasource}">
+              SELECT * from movie where id=?
+        <sql:param value="${mtgReq.id}"/>
+        </sql:query>
+        <c:set target="${output}" property="getReq2"  value="${result}"/>
+    </m:request>
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'PUT'}">
- <sql:update var="result" dataSource="jdbc/mtgDataSource"> update movie set rating=? where id=? 
-<sql:param value="${mtgReq.params['rating']}" />
-<sql:param value="${mtgReq.id}"/>
-</sql:update>
- <mtg:out value="${map}" tableName="movie"/>
- </c:when>
+    <m:request method='POST'>
+       <sql:update var="result" dataSource="${datasource}">
+            INSERT INTO movie (name,rating) values (?,?)
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <sql:update var="result" dataSource="jdbc/mtgDataSource"> delete from movie where id=? 
-<sql:param value="${mtgReq.id}"/>
-</sql:update>
- <c:set target="${requestScope.map}" property="d1" value="${result}"/>
- <mtg:out value="${map}" tableName="movie"/>
- </c:when>
+            <sql:param value="${mtgReq.params['name']}"/>
+            <sql:param value="${mtgReq.params['rating']}"/>
+       </sql:update>
+       <c:set target="${output}" property="postResult" value="${result}"/>
+    </m:request>
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
- <mtg:status value="404" message="Resource not found."/>
- </c:when>
+    <m:request method='PUT' item="true">
+       <sql:update var="result" dataSource="${datasource}">
+            UPDATE movie SET rating=? where id=?
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'POST'}">
- <mtg:status value="404" message="Resource not found."/>
- </c:when>
+            <sql:param value="${mtgReq.params['rating']}"/>
+            <sql:param value="${mtgReq.id}"/>
+       </sql:update>
+       <c:set target="${output}" property="putResult" value="${result}"/>
+    </m:request>
 
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'PUT'}">
- <mtg:status value="404" message="Resource not found."/>
- </c:when>
+    <m:request method='DELETE' item="true">
+        <sql:update var="result" dataSource="${datasource}">
+            DELETE FROM movie WHERE id=?
 
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <mtg:status value="404" message="Resource not found."/>
- </c:when>
+            <sql:param value="${mtgReq.id}"/>
+        </sql:update>
+        <c:set target="${output}" property="deleteResult" value="${result}"/>
+    </m:request>
 
- <c:otherwise>
- <mtg:status value="405" message="Method not defined"/>
- </c:otherwise>
-
-</c:choose>
+</m:resource>
