@@ -29,7 +29,7 @@ public class Main {
 
 
         StandardContext ctx = (StandardContext) tomcat.addWebapp("/rest", new File(webappDirLocation).getAbsolutePath());
-        ctx.setDefaultContextXml("/META-INF/context.xml");
+//        ctx.setDefaultContextXml("/META-INF/context.xml");
         System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
 
         // Declare an alternative location for your "WEB-INF/classes" dir
@@ -50,7 +50,7 @@ public class Main {
         resource.setName("jdbc/mason");
         resource.setType(DataSource.class.getName());
         resource.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");
-        resource.setProperty("url", "jdbc:mysql://192.168.1.11:3306/moviedb?useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&characterSetResults=UTF-8&allowMultiQueries=true&connectTimeout=120000");
+        resource.setProperty("jdbcUrl", "jdbc:mysql://192.168.1.11:3306/moviedb?useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&characterSetResults=UTF-8&allowMultiQueries=true&connectTimeout=120000");
         resource.setProperty("username", "moviebuff");
         resource.setProperty("password", "password");
         resource.setProperty("poolName", "masonSamplePool");

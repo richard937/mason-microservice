@@ -78,7 +78,7 @@
                     <artifactId>protobuf-java</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>runtime</scope>
+<!--            <scope>runtime</scope>-->
         </dependency>
 
         <dependency>
