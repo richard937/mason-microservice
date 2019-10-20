@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context cookies="false"
-         path="/mywebapp"
+         path="/"
          privileged="true"
          reloadable="true">
     <Resource auth="Container"
@@ -14,7 +14,7 @@
              maxLifetime="1800000"
              maximumPoolSize="2"
              minimumIdle="1"
-             name="jdbc/mtgDataSource"
+             name="jdbc/mason"
              password="password"
              poolName="masonSamplePool"
              type="javax.sql.DataSource"
