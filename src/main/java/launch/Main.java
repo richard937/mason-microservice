@@ -7,9 +7,7 @@ import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
-import org.apache.tomcat.util.descriptor.web.ContextResource;
 
-import javax.sql.DataSource;
 import java.io.File;
 
 public class Main {
@@ -46,17 +44,17 @@ public class Main {
         ctx.setDefaultWebXml(new File("/WEB-INF/web.xml").getAbsolutePath());
         Connector connector = tomcat.getConnector();
 
-        ContextResource resource = new ContextResource();
-        //resource.setProperty("factory", "org.apache.tomcat.jdbc.pool.DataSourceFactory");
-        resource.setName("jdbc/mason");
-        resource.setType(DataSource.class.getName());
-        resource.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");
-        resource.setProperty("jdbcUrl", "jdbc:mysql://192.168.1.11:3306/moviedb?useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&characterSetResults=UTF-8&allowMultiQueries=true&connectTimeout=120000");
-        resource.setProperty("username", "moviebuff");
-        resource.setProperty("password", "password");
-        resource.setProperty("poolName", "masonSamplePool");
-        resource.setProperty("factory", "com.zaxxer.hikari.HikariJNDIFactory");
-        ctx.getNamingResources().addResource(resource);
+//        ContextResource resource = new ContextResource();
+//        //resource.setProperty("factory", "org.apache.tomcat.jdbc.pool.DataSourceFactory");
+//        resource.setName("jdbc/mason");
+//        resource.setType(DataSource.class.getName());
+//        resource.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");
+//        resource.setProperty("jdbcUrl", "jdbc:mysql://192.168.1.11:3306/moviedb?useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&characterSetResults=UTF-8&allowMultiQueries=true&connectTimeout=120000");
+//        resource.setProperty("username", "moviebuff");
+//        resource.setProperty("password", "password");
+//        resource.setProperty("poolName", "masonSamplePool");
+//        resource.setProperty("factory", "com.zaxxer.hikari.HikariJNDIFactory");
+//        ctx.getNamingResources().addResource(resource);
 
         try {
             tomcat.start();
