@@ -55,13 +55,15 @@
         <dependency>
             <groupId>com.metamug</groupId>
             <artifactId>mason</artifactId>
-            <version>3.3</version>
+            <version>3.5</version>
         </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20180813</version>
         </dependency>
+
         <dependency>
             <groupId>com.github.wnameless</groupId>
             <artifactId>json-flattener</artifactId>
@@ -84,6 +86,12 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>3.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.metamug</groupId>
+            <artifactId>mtg-api</artifactId>
+            <version>1.5</version>
         </dependency>
 
     </dependencies>
@@ -114,8 +122,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
 
         </plugins>
     </build>
