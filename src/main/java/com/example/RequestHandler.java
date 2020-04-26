@@ -25,6 +25,8 @@ public class RequestHandler implements RequestProcessable {
         customer.setContact("+1 943 322 4292", "john.doe@gmail.com");
 
         Response response = new Response();
+
+
         // set your model object as payload here
         response.setPayload(customer);
         return response;

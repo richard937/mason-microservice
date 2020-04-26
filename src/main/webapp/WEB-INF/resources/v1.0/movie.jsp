@@ -19,8 +19,9 @@
 
     <m:request method='POST'>
        <sql:update var="result" dataSource="${datasource}">
-            INSERT INTO movie (name,rating) values (?,?)
+            INSERT INTO movie (releaseDate,name,rating) values (?,?,?)
 
+            <sql:param value="${mtgReq.params['releaseDate']}"/>
             <sql:param value="${mtgReq.params['name']}"/>
             <sql:param value="${mtgReq.params['rating']}"/>
        </sql:update>

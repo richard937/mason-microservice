@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.metamug</groupId>
             <artifactId>mason</artifactId>
-            <version>3.5</version>
+            <version>3.4</version>
         </dependency>
 
         <dependency>
