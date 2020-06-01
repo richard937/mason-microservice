@@ -7,7 +7,9 @@ import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
+import org.apache.tomcat.util.descriptor.web.ContextResource;
 
+import javax.sql.DataSource;
 import java.io.File;
 
 public class Main {
@@ -33,6 +35,7 @@ public class Main {
 
         // Declare an alternative location for your "WEB-INF/classes" dir
         // Servlet 3.0 annotation will work
+
         File additionWebInfClasses = new File("target/classes");
         WebResourceRoot resources = new StandardRoot(ctx);
         resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes",
@@ -45,7 +48,7 @@ public class Main {
         Connector connector = tomcat.getConnector();
 
 //        ContextResource resource = new ContextResource();
-//        //resource.setProperty("factory", "org.apache.tomcat.jdbc.pool.DataSourceFactory");
+//        resource.setProperty("factory", "org.apache.tomcat.jdbc.pool.DataSourceFactory");
 //        resource.setName("jdbc/mason");
 //        resource.setType(DataSource.class.getName());
 //        resource.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");

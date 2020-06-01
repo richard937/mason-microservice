@@ -13,8 +13,8 @@
             <m:header name="Content-Type" value="application/json"/>
             <m:xbody>
                 {
-                    "foo1": "${mtgReq.params['foo1']}",
-                    "foo2": ${mtgReq.params['foo2']}
+                    "foo1": "foovalue1",
+                    "foo2": "foovalue2"
                 }
             </m:xbody>
         </m:xrequest>

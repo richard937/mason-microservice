@@ -20,8 +20,9 @@ public class RequestHandler implements RequestProcessable {
 
 
         Customer customer = new Customer();
-        customer.setName("John Doe.");
+        customer.setName("John Doeyy.");
         customer.setId(8);
+        customer.setRoll(555);
         customer.setContact("+1 943 322 4292", "john.doe@gmail.com");
 
         Response response = new Response();

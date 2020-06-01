@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Customer {
     private int id;
+    private int roll;
     private String name;
     @XmlElement(name = "contact")
     private Contact contact;
@@ -23,6 +24,10 @@ public class Customer {
         this.id = id;
     }
 
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
+
     public void setContact(String phone, String email) {
         contact = new Contact();
         contact.setEmail(email);
@@ -31,6 +36,10 @@ public class Customer {
 
     public int getId() {
         return id;
+    }
+
+    public int getRoll() {
+        return roll;
     }
 
     public String getName() {
